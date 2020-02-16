@@ -6,12 +6,7 @@ import { Container, Image } from "./styles";
 
 export default function WeatherImage(props) {
     const defineImage = () => {
-        switch (props.weatherLabel) {
-            case "cloudy":
-                return "image";
-            default:
-                break;
-        }
+        return require(`../../assets/images/${props.weatherLabel}.png`);
     };
 
     return (

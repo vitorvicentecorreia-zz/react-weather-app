@@ -14,7 +14,7 @@ export default function NextDay(props) {
                 <NextDayContainer className="next-day-container">
                     <Day>{props.day}</Day>
                     <WeatherImage weatherLabel={props.weatherLabel} />
-                    <WeatherLabel>{props.weatherLabel}</WeatherLabel>
+                    <WeatherLabel>{props.temperature}</WeatherLabel>
                 </NextDayContainer>
             )}
         </Container>

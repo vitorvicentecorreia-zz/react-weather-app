@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import WeatherApp from "./pages/WeatherPage";
+import WeatherContainer from "./containers/WeatherContainer";
 import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(<WeatherApp />, document.getElementById("root"));
-serviceWorker.unregister();
+ReactDOM.render(<WeatherContainer />, document.getElementById("root"));
+serviceWorker.register();

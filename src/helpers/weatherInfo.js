@@ -38,12 +38,14 @@ export const weatherInfoCreator = data => {
     weatherData.currently.temperature = temperatureCreator(
         data.currently.temperature
     );
-    weatherData.currently.windSpeed = parseInt(data.currently.windSpeed * 3.6);
+    weatherData.currently.windSpeed = `${parseInt(
+        data.currently.windSpeed * 3.6
+    )} km/h`;
     weatherData.currently.temperatureHigh = temperatureCreator(
         data.daily.data[0].temperatureHigh
     );
     weatherData.currently.humidity = `${data.daily.data[0].humidity * 100}%`;
-    weatherData.currently.label = data.daily.data[0].precipType;
+    weatherData.currently.label = data.daily.data[0].icon;
     weatherData.week = weekCreator(data.daily.data);
     return weatherData;
 };
@@ -61,4 +63,5 @@ const weekCreator = weekData => {
     return filteredWeekData;
 };
 
-const temperatureCreator = fahrenheit => parseInt((fahrenheit - 32) / 1.8);
+const temperatureCreator = fahrenheit =>
+    `${parseInt((fahrenheit - 32) / 1.8)}°`;

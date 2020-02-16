@@ -10,9 +10,9 @@ export default function WeatherInfo(props) {
             {!props.label && !props.data ? (
                 <InfoLoader />
             ) : (
-                <InfoContainer size={props.size} className="info-container">
-                    <InfoData>{props.data}</InfoData>
-                    <InfoLabel>{props.label}</InfoLabel>
+                <InfoContainer className="info-container">
+                    <InfoData size={props.size}>{props.data}</InfoData>
+                    <InfoLabel size={props.size}>{props.label}</InfoLabel>
                 </InfoContainer>
             )}
         </Container>

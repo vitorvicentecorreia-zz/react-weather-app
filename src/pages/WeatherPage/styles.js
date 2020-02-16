@@ -11,11 +11,14 @@ export const TimezoneContainer = styled.div`
 `;
 export const WeatherInfoContainer = styled.div`
     height: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 `;
 export const WeatherInfoSmall = styled.div`
     display: flex;
     justify-content: space-around;
-    margin: 50px auto 0;
+    margin: 65px auto;
     width: 90%;
 `;
 export const NextInfoContainer = styled.div`

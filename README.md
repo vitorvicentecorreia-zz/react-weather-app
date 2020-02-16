@@ -23,6 +23,13 @@
 23 - Criar um propWrapper para simular um componente com prop
 24 - Criar um objeto timezoneData e passar por prop para o propWrapper
 25 - Criar as validações dos 3 campos passados por prop
+26 - Criar arquivos de testes para o componente de WeatherImage
+27 - Criar arquivos de WeatherImage e ImageLoader
+28 - Importar esses arquivos no arquivo de testes do WeatherImage
+29 - Criar o describe da suite de testes
+30 - Criar um it() para o primeiro teste
+31 - Criar um noPropWrapper e um propWrapper para os testes
+32 -
 
 TESTES
 
@@ -30,6 +37,34 @@ Timezone
 
 -   Enquanto o componente não receber os dados sobre o timezone por prop, ele deve mostrar um content loader no lugar do texto
 -   Quando receber os dados por prop o componente deve mostra-los.
+
+Weather Info Wrapper
+
+-   O componente deve conter um componente WeatherImage e 4 Weather Info
+
+WeatherImage
+
+-   Enquanto não receber os dados para definir a imagem por prop, ele d eve mostrar um
+    content loader no lugar do texto
+-   O componente deve ter uma lógica que ao receber uma info sobre o clima por prop, ele
+    defina a imagem que deverá ser renderizada
+-   Quando definida a imagem, o content loader deve subir e a imagem aparecer
+-   O componente deve receber uma prop que defina se o componente vai ser pequeno ou grande
+
+Weather Info
+
+-   Enquanto o componente não receber o dado sobre a sua label, ele deve mostrar um content
+    loader no lugar do dado
+-   A label deve ficar sempre a mostra
+-   O componente deve receber uma prop "main", que define se o componente é o Weather Info
+    principal
+-   A label do componente main deve ficar com o content loader enquanto não receber o dado
+
+Next Day Weather
+
+-   Enquanto o componente não receber o dado sobre o dia, ele deve mostrar um content
+    loader no lugar do componente
+-   O
 
 ** Aprendizados **
 

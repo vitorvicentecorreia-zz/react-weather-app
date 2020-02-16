@@ -5,19 +5,17 @@ import {
     ContainerData,
     ContainerLoader,
     City,
-    Date,
-    Time
+    DateTime
 } from "./styles";
 import TimezoneLoader from "../../components/ContentLoaders/TimezoneLoader";
 
 export default function Timezone(props) {
     return (
         <Container>
-            {props.timezoneData ? (
+            {props.city ? (
                 <ContainerData>
-                    <City className="city">{props.timezoneData.city}</City>
-                    <Date className="date">{props.timezoneData.date}</Date>
-                    <Time className="time">{props.timezoneData.time}</Time>
+                    <City className="city">{props.city}</City>
+                    <DateTime className="date-time">{props.datetime}</DateTime>
                 </ContainerData>
             ) : (
                 <ContainerLoader>

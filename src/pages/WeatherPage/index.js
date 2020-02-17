@@ -25,17 +25,18 @@ export default function WeatherPage() {
 
         navigator.permissions.query({ name: "geolocation" }).then(result => {
             alert(result.state);
+            navigator.geolocation.getCurrentPosition();
             if (result.state === "granted" && result.state === "prompt") {
-                navigator.geolocation.getCurrentPosition(async position => {
-                    const { latitude, longitude } = position.coords;
-                    const weatherRequest = await darkSkyApi.get(
-                        `${latitude},${longitude}`
-                    );
-                    const weatherInfoRequest = weatherInfoCreator(
-                        weatherRequest.data
-                    );
-                    setWeatherInfo(weatherInfoRequest);
-                });
+                // navigator.geolocation.getCurrentPosition(async position => {
+                //     const { latitude, longitude } = position.coords;
+                //     const weatherRequest = await darkSkyApi.get(
+                //         `${latitude},${longitude}`
+                //     );
+                //     const weatherInfoRequest = weatherInfoCreator(
+                //         weatherRequest.data
+                //     );
+                //     setWeatherInfo(weatherInfoRequest);
+                // });
             }
         });
     }, []);

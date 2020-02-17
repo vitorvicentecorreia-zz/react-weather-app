@@ -24,28 +24,21 @@ export default function WeatherPage() {
         weatherData.currently = {};
 
         navigator.permissions.query({ name: "geolocation" }).then(result => {
-            alert(result.state);
-            navigator.geolocation.getCurrentPosition(async position =>
-                alert(position)
-            );
+            navigator.geolocation.getCurrentPosition();
+            if (result.state === "granted" && result.state === "prompt") {
+                navigator.geolocation.getCurrentPosition(async position => {
+                    const { latitude, longitude } = position.coords;
+                    alert(latitude, longitude);
+                    const weatherRequest = await darkSkyApi.get(
+                        `${latitude},${longitude}`
+                    );
+                    const weatherInfoRequest = weatherInfoCreator(
+                        weatherRequest.data
+                    );
+                    setWeatherInfo(weatherInfoRequest);
+                });
+            }
         });
-
-        // navigator.permissions.query({ name: "geolocation" }).then(result => {
-        //     navigator.geolocation.getCurrentPosition();
-        //     if (result.state === "granted" && result.state === "prompt") {
-        //         navigator.geolocation.getCurrentPosition(position => {
-        //             const { latitude, longitude } = position.coords;
-        //             alert(latitude, longitude);
-        //             // const weatherRequest = await darkSkyApi.get(
-        //             //     `${latitude},${longitude}`
-        //             // );
-        //             // const weatherInfoRequest = weatherInfoCreator(
-        //             //     weatherRequest.data
-        //             // );
-        //             // setWeatherInfo(weatherInfoRequest);
-        //         });
-        //     }
-        // });
     }, []);
 
     return (

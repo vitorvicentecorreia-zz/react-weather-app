@@ -23,20 +23,14 @@ export default function WeatherPage() {
         let weatherData = {};
         weatherData.currently = {};
 
-        navigator.permissions.query({ name: "geolocation" }).then(result => {
-            if (result.state === "granted" && result.state === "prompt") {
-                navigator.geolocation.getCurrentPosition(async position => {
-                    const { latitude, longitude } = position.coords;
-                    alert(latitude, longitude);
-                    const weatherRequest = await darkSkyApi.get(
-                        `${latitude},${longitude}`
-                    );
-                    const weatherInfoRequest = weatherInfoCreator(
-                        weatherRequest.data
-                    );
-                    setWeatherInfo(weatherInfoRequest);
-                });
-            }
+        navigator.geolocation.getCurrentPosition(async position => {
+            const { latitude, longitude } = position.coords;
+            const weatherRequest = await darkSkyApi.get(
+                `${latitude},${longitude}`
+            );
+            const weatherInfoRequest = weatherInfoCreator(weatherRequest.data);
+            setWeatherInfo(weatherInfoRequest);
+            console.log(weatherInfoRequest);
         });
     }, []);
 
@@ -96,6 +90,7 @@ export default function WeatherPage() {
                 {weatherInfo.week &&
                     weatherInfo.week.map(day => (
                         <NextDay
+                            key={day.day}
                             day={day.day}
                             weatherLabel={day.label}
                             temperature={day.temperature}

@@ -22,9 +22,13 @@ export default function WeatherPage() {
     useEffect(() => {
         let weatherData = {};
         weatherData.currently = {};
-        navigator.geolocation.getCurrentPosition(position =>
-            console.log(position)
-        );
+
+        navigator.permissions.query({ name: "geolocation" }).then(result => {
+            alert(result.state);
+            navigator.geolocation.getCurrentPosition(async position =>
+                alert(position)
+            );
+        });
 
         // navigator.permissions.query({ name: "geolocation" }).then(result => {
         //     navigator.geolocation.getCurrentPosition();

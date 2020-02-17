@@ -25,7 +25,7 @@ export default function WeatherPage() {
 
         navigator.permissions.query({ name: "geolocation" }).then(result => {
             alert(result.state);
-            if (result.state === "granted") {
+            if (result.state === "granted" && result.state === "prompt") {
                 navigator.geolocation.getCurrentPosition(async position => {
                     const { latitude, longitude } = position.coords;
                     const weatherRequest = await darkSkyApi.get(

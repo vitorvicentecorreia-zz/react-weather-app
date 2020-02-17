@@ -24,7 +24,6 @@ export default function WeatherPage() {
         weatherData.currently = {};
 
         navigator.permissions.query({ name: "geolocation" }).then(result => {
-            navigator.geolocation.getCurrentPosition();
             if (result.state === "granted" && result.state === "prompt") {
                 navigator.geolocation.getCurrentPosition(async position => {
                     const { latitude, longitude } = position.coords;
